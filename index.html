@@ -39,6 +39,8 @@
     <div class="col-5 bg-white content rounded">   
     <h3>Ramdom Emoji generator</h3>    
     <h1 id="emoji">&#128212</h1>
+
+    <!-- The button to call the function -->
     <button onclick="apiCall()" class="btn btn-primary position-relative py-2 px-4">Generate Emoji</button>
     </div>
 
@@ -47,13 +49,14 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script>
+
+        //Function to generate random emoji
         function apiCall(){
         fetch("https://emojihub.yurace.pro/api/random").then(async(res)=>{
             const ob=await res.json();
-            const htmocode=ob.htmlCode[0].replace(';','');
-            console.log(typeof(htmocode));
+            const emojiCode=ob.htmlCode[0].replace(';','');
             const emoji1=document.getElementById("emoji");
-            emoji1.innerHTML=htmocode;
+            emoji1.innerHTML=emojiCode;
         })
     }
     </script>
