@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API CALL</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<style>
+    body{
+        background-color: rgb(58,185,163);
+    }
+    .content{
+        padding-top:20px;
+        margin-left:auto;
+        margin-right: auto;
+        height:60vh;
+        margin-top:90px;
+        text-align: center;
+    }
+    .content h3{
+        color:rgb(58,185,163);
+        font-family: "Open Sans",sans-serif;
+        font-weight:300;
+    }
+    #emoji{
+        margin-top:50px;
+        font-size:150px;
+    }
+    button{
+        margin-top:50px;
+    }
+</style>
+<body>
+    <div class="container">
+    <div class="row">
+    
+    <div class="col-5 bg-white content rounded">   
+    <h3>Ramdom Emoji generator</h3>    
+    <h1 id="emoji">&#128212</h1>
+    <button onclick="apiCall()" class="btn btn-primary position-relative py-2 px-4">Generate Emoji</button>
+    </div>
+
+    </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        function apiCall(){
+        fetch("https://emojihub.yurace.pro/api/random").then(async(res)=>{
+            const ob=await res.json();
+            const htmocode=ob.htmlCode[0].replace(';','');
+            console.log(typeof(htmocode));
+            const emoji1=document.getElementById("emoji");
+            emoji1.innerHTML=htmocode;
+        })
+    }
+    </script>
+</body>
+</html>
